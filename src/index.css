@@ -84,6 +84,11 @@ h1 {
   transform: rotate(269deg);
 }
 
+.app .icon {
+  position: relative;
+  right: -89%;
+}
+
 .app .bottom {
   display: flex;
   justify-content: space-evenly;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { API_KEY } from './config';
 
@@ -7,10 +7,9 @@ function App() {
   const [location, setLocation] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`;
-  
   const searchLocation = (event) => {
     if (event.key === 'Enter') {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`;
       axios.get(url)
         .then((response) => {
           setData(response.data);
@@ -23,7 +22,7 @@ function App() {
         });
       setLocation('');
     }
-  }
+  };
 
   return (
     <div className="app">
@@ -46,6 +45,11 @@ function App() {
           <div className="description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div>
+          {data.weather && data.weather[0].icon && ( // Check if weather data and icon are available
+            <div className="icon">
+              <img src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt="Weather Icon" />
+            </div>
+          )}
         </div>
         {errorMessage && (
           <div className="error-message">
