@@ -39,6 +39,16 @@ h1 {
   top: 0;
   left: 0;
   z-index: -1;
+  animation: slide 20s infinite alternate;
+}
+
+@keyframes slide {
+  0% {
+    background-position: left; /* Start position */
+  }
+  100% {
+    background-position: right; /* End position */
+  }
 }
 
 .app .search {

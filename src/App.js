@@ -19,6 +19,7 @@ function App() {
         .catch((error) => {
           setErrorMessage('Location not found. Please try again.');
           console.error(error);
+          setData({}); // Reset data state
         });
       setLocation('');
     }
